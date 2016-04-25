@@ -1,0 +1,11 @@
+<div class="span-8 last">
+  <div class="padd">
+    <%= content_tag("h1", article.name.force_encoding("utf-8"), :class => "color-title") %>
+  </div>
+  <div class="article">
+    <div class="span-4">
+       <%= link_to image_tag(article.avatar.url(:thumb).force_encoding("utf-8"), :alt => article.name.force_encoding("utf-8")), article, :title => article.name.force_encoding("utf-8"), :class => "with_img" %>
+    </div>
+    <%= article.description.html_safe.force_encoding("utf-8") %>
+  </div>
+</div>

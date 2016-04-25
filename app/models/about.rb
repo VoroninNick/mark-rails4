@@ -1,0 +1,21 @@
+class About < ActiveRecord::Base
+  acts_as_tree
+  has_many :images, :as => :imageable
+  scope :published, -> { where(published: 't') }
+
+  protected
+
+  def before_destroy
+    if self.id.to_i == 1 #we can't remove this super page
+      errors.add_to_base("Саме цю сторінку не можна видалити або зробити невидимою, бо вона є презентабельною в розділі 'Про нас'")
+      false
+    end
+  end
+
+  def before_update
+    if (self.id.to_i == 1) && !self.published #we can't remove this super page
+      errors.add_to_base("Саме цю сторінку не можна видалити або зробити невидимою, бо вона є презентабельною в розділі 'Про нас'")
+      false
+    end
+  end
+end

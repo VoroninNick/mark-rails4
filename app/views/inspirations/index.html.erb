@@ -1,0 +1,24 @@
+<div class="span-4">
+  <%= content_tag("h1", @title, :class => "title") %>
+</div>
+<div class="span-8 last">
+  <%= content_tag("h1", "Перший  у Львові Центр меблів та інтер’єру!", :class => "color-title") %>
+</div>
+<div class="articles">
+  <% @inspirations.each do |article| %>
+      <div class="article">
+        <div class="span-1">&nbsp;</div>
+        <div class="span-4">
+          <div class="padd">
+            <%= link_to content_tag("h3", article.name.force_encoding("utf-8")), article, :title => article.name.force_encoding("utf-8") %>
+          </div>
+          <%= link_to image_tag(article.avatar.url(:thumb).force_encoding("utf-8"), :alt => article.name), article, :title => article.name.force_encoding("utf-8"), :class => "with_img" %>
+          <i class="padd"><%= truncate(article.brief.force_encoding("utf-8"), :length => 100) %></i>
+          <%= link_to "Деталі", article, :title => "Деталі", :class => "details" %>
+          <%= link_to "PDF", article.pdf.url.force_encoding("utf-8"), :title => "Завантажити файл", :class => "details" unless article.pdf_file_name.blank? %>
+        </div>
+        <div class="span-1 <%= cycle("", "last") %>"></div>
+      </div>
+  <% end %>
+</div>
+<%= will_paginate @inspirations, :previous_label => "<< Попередня", :next_label => "Наступна >>" %>

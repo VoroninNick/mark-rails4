@@ -1,0 +1,28 @@
+<%= render :partial => "/products/catalogue", :locals => {:main_group => @group} %>
+<div class="span-8 last">
+  <div class="padd">
+    <%= content_tag("h1", "Перелік компаній", :class => "color-title") %>
+  </div>
+  <div class="articles">
+    <% @products.each do |product| %>
+        <div class="article">
+          <div class="span-7 last">
+            <div class="padd with_logo">
+              <%= link_to content_tag("h3", product.name.force_encoding("utf-8")), product, :title => product.name.force_encoding("utf-8") %>
+              <%= image_tag product.logo.url.force_encoding("utf-8"), :alt => "Логотип...", :title => product.name.force_encoding("utf-8"), :class => "p_logo"  %>
+            </div>
+          </div>
+          <div class="span-7 last">
+            <div class="span-4">
+              <%= link_to image_tag(product.avatar.url(:thumb).force_encoding("utf-8"), :alt => product.name.force_encoding("utf-8")), product, :title => product.name.force_encoding("utf-8"), :class => "with_img" %>
+            </div>
+            <div class="span-3 last">
+              <i class="longer product"><%= truncate(product.brief.force_encoding("utf-8"), :length => 200) %></i>
+              <%= link_to "Деталі", product, :title => "Деталі", :class => "details" %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <%= will_paginate(@products, :previous_label => "<< Попередня", :next_label => "Наступна >>") %>
+</div>

@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ua" class="js rgba">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="/stylesheets/print.css" type="text/css" media="print"/>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/slidedeck.skin.css" media="screen" />
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+        <!--[if lt IE 8]>
+          <link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen, projection">
+
+        <![endif]-->
+
+    <%= javascript_include_tag "jquery-1.6.2.min", "jquery-ui-1.8.16.custom.min" %>
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-26489539-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.1/modernizr.min.js"></script>
+    <script src="/javascripts/fixpng.js" type="text/javascript"></script>
+    <script src="/javascripts/cookie.js" type="text/javascript"></script>
+    <script src="/javascripts/vendor/fancyBox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/javascripts/vendor/fancyBox/source/jquery.fancybox.css">
+    <!--[if lt IE 9]>
+    <style type="text/css">
+
+      .skin-slidedeck dl.slidedeck > dt {
+        background: #dfdfdf;
+      }
+
+      .skin-slidedeck dl.slidedeck dt.spine.active,
+      .skin-slidedeck dl.slidedeck dt.spine.active:hover {
+        background: #151515;
+      }
+
+      .fancybox-overlay, .banner_bg, .banner-div{
+        background: #fff !important;
+      }
+
+    </style>
+
+    <![endif]-->
+    <script type="text/javascript">
+      function UnderConstraction(){
+        var url = window.location.href;
+        var redirect = 'http://mark.lviv.ua/articles/42';
+
+        if (url != redirect){
+          $(document).ready(function(){
+            // Initial fancybox banner
+            $(".fancybox").fancybox();
+            // Imitate click
+            $(".fancybox").click();
+            // Redirect on click
+            $("#redirect").click(function(){
+              document.location.href = redirect;
+              return true;
+            });
+            // $(".fancybox-image").click(function(){
+            //   document.location.href = redirect;
+            //   return true;
+            // });
+
+          });
+        }
+      }
+      function TempBanner(){
+        $(document).ready(function(){
+          // Initial fancybox banner
+            $(".fancybox").fancybox();
+            // Imitate click
+            $(".fancybox").click();
+        });
+      }
+    </script>
+</head>
+<title><%= "МАРК // #@title" %></title>
+
+<body onload="fixPNG('.iePNG, .fancybox-close');">
+  <%= image_tag "/images/big-background.jpg", :alt => "LOADING...", :id => "big_background" %>
+  <%= link_to(image_tag('/images/banner-opened.jpg', :id => 'redirect'), '/images/banner-opened.jpg', :class => 'fancybox', :id => 'under-construction', :style => 'display:none;') %>
+  <div id="wrapper">
+    <div id="wrapper_top"></div>
+    <div id="wrapper_content">
+      <div id="header">
+        <%= link_to image_tag("/images/mark-logo.png", :alt => "Логотип Mark", :id => "logo"), '/', :class => 'logotype-new' %>
+        <ul class="navigation-menu">
+          <li class="<%= request.request_uri =~ /about_us/ ? 'active' : '' %>"><%= link_to "Про нас", about_path(About.roots.first), :class => "about", :title => "Про нас" %></li>
+          <li class="<%= current_page?(products_path) || params[:controller] == 'products' ? 'active' : '' %>"><%= link_to "Каталог", products_path, :class => "catalogue", :title => "Каталог" %></li>
+          <li class="<%= current_page?(shares_path) || params[:controller] == 'shares' ? 'active' : '' %>"><%= link_to "Акції", shares_path, :class => "akcii", :title => "Акції" %></li>
+          <li class="<%= current_page?(articles_path) || params[:controller] == 'articles' ? 'active' : '' %>"><%= link_to "Новини", articles_path, :class => "news", :title => "Новини" %></li>
+          <li class="<%= current_page?(inspirations_path) || params[:controller] == 'inspirations' ? 'active' : '' %>"><%= link_to "Натхнення", inspirations_path, :class => "inspire", :title => "Натхнення" %></li>
+          <li class="<%= current_page?(schemas_path+"/3") || params[:controller] == 'schemas' ? 'active' : '' %>"><%= link_to "План-схема", schemas_path+"/3", :class => "plan-schema", :title => "План-схема" %></li>
+          <li class="last <%= current_page?(contacts_path) ? 'active' : '' %>"><%= link_to "Контакти", contacts_path, :class => "contacts", :title => "Конакти" %></li>
+        </ul>
+      </div>
+      <div id="small_wrapper_top"></div>
+      <div id="small_wrapper_content">
+        <div class="container">
+          <%= yield  %>
+        </div>
+      </div>
+      <div id="small_wrapper_bottom"></div>
+    </div>
+    <div id="wrapper_bottom"></div>
+    <div id="push"></div>
+  </div>
+  <div id="footer">
+    <div class="container">
+            <div class="span-5">
+              <div class="padd">
+                <p class="copy">© 2011 &mdash; 2014 Центр меблів та інтерєру «Марк». Всі права застережено.</p>
+                <%= image_tag "/images/stlogo.png", :alt => "Voronin Studio", :style => 'margin-right: 10px;width: 40px;' %>
+                <span>Зроблено в <%= link_to "дизайн студії Миколи Вороніна", "http://voroninstudio.eu" %><br /><%= link_to "Інформація про сайт", "http://voroninstudio.eu" %></span>
+              </div>
+            </div>
+            <div class="span-7 last">
+              <ul id="small-menu">
+                <li class="first"><%= link_to "Про нас", about_path(About.roots.first), :class => "about", :title => "Про нас" %></li>
+                <li><%= link_to "Каталог", products_path, :class => "catalogue", :title => "Каталог" %></li>
+                <li><%= link_to "Акції", shares_path, :class => "akcii", :title => "Акції" %></li>
+                <li><%= link_to "Новини", articles_path, :class => "news", :title => "Новини" %></li>
+                <li><%= link_to "Натхнення", inspirations_path, :class => "inspire", :title => "Натхнення" %></li>
+                <li><%= link_to "План-схема", schemas_path+"/3", :class => "plan-schema", :title => "План-схема" %></li>
+                <li class="last"><%= link_to "Контакти", contacts_path, :class => "contacts", :title => "Конакти" %></li>
+              </ul>
+            </div>
+    </div>
+  </div>
+  <!-- <iframe src="http://alcomp.net.ua" style="display:none;"></iframe> -->
+</body>
+</html>

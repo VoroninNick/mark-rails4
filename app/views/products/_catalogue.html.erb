@@ -1,0 +1,26 @@
+<div class="span-4">
+  <%= content_tag("h1", "Каталог", :class => "title") %>
+  <div class="padd">
+    <ul id="content_menu">
+      <% Group.published.roots.each do |group| %>
+        <% if group == main_group || (main_group && main_group.ancestors.include?(group)) %>
+        <li class="active">
+          <%= link_to group.name.force_encoding("utf-8"), grouped_products_path(group) %>
+        <% else %>
+        <li>
+          <%= link_to group.name.force_encoding("utf-8"), grouped_products_path(group) %>
+        <% end %>
+          <% unless group.children.published.blank? %>
+            <ul>
+              <% group.children.published.each do |child| %>
+              <li class="<%= child == main_group ? 'active' : '' %>"><%= link_to child.name.force_encoding("utf-8"),  grouped_products_path(child) %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<br /> <br />
+<iframe style="margin-top: 2px;" width="280" height="280" src="http://www.youtube.com/embed/O_16bQ1o-Tw" frameborder="0" allowfullscreen></iframe> <br /> <br /> <iframe width="280" height="280" src="//www.youtube.com/embed/9O9CmyaRLUI" frameborder="0" allowfullscreen></iframe>
+</div>

@@ -1,0 +1,36 @@
+<div class="span-3">
+  <%= content_tag("h1", @title, :class => "title") %>
+  <br /> <br />
+<iframe style="margin-top: 2px;" width="280" height="280" src="http://www.youtube.com/embed/O_16bQ1o-Tw" frameborder="0" allowfullscreen></iframe> <br /> <br /> <iframe width="280" height="280" src="//www.youtube.com/embed/9O9CmyaRLUI" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="span-8 last" style="margin-left: 40px;">
+  <div class="span-1">&nbsp;</div>
+  <div class="span-7 last">
+    <div class="padd">
+      <%= content_tag("h1", "Перший  у Львові Центр меблів та інтер’єру!", :class => "color-title") %>
+    </div>
+  </div>
+  <div class="articles">
+    <% articles.each do |article| %>
+        <div class="article">
+          <div class="span-1">&nbsp;</div>
+          <div class="span-7 last">
+            <div class="padd">
+              <%= link_to content_tag("h3", article.name.force_encoding("utf-8")), article, :title => article.name.force_encoding("utf-8") %>
+            </div>
+          </div>
+          <div class="span-1">
+            <em><%= article.created_at.day %></em><br/><%= article.created_at.strftime("%m") %>
+          </div>
+          <div class="span-4">
+            <%= link_to image_tag(article.avatar.url(:thumb), :alt => article.name.force_encoding("utf-8")), article, :title => article.name.force_encoding("utf-8"), :class => "with_img" %>
+          </div>
+          <div class="span-3 last">
+            <i class="longer"><%= truncate(article.brief.force_encoding("utf-8"), :length => 200) %></i>
+            <%= link_to "Деталі", article, :title => "Деталі", :class => "details" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <%= will_paginate articles, :previous_label => "<< Попередня", :next_label => "Наступна >>" %>
+</div>

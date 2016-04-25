@@ -1,0 +1,29 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('ol.sortable').nestedSortable({
+	items: 'li',
+        maxLevels: 2,
+        update: function(event, ui) {
+          $.post(
+            '/admin/groups/reorder',
+            {result: $(this).nestedSortable('toArray')}
+          );
+        }
+    });
+    $('ol.sortable').disableSelection();
+  });
+</script>
+<div class="reorder">
+    <ol class="sortable">
+      <% @groups.each do |group| %>
+      <li id="<%= "item_#{group.id}" %>">
+        <h3><%= group.name %></h3>
+        <ol>
+          <% group.children.each do |child| %>
+            <li id="<%= "item_#{child.id}" %>"><%= child.name %></li>
+          <% end %>
+        </ol>
+      </li>
+      <% end %>
+    </ol>
+</div>

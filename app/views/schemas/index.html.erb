@@ -1,0 +1,21 @@
+<script type="text/javascript"></script>
+<div class="span-4">
+  <%= content_tag("h1", "План схема", :class => "title") %>
+  <div class="padd">
+    <ul id="content_menu">
+    	<% @schemas.each do |schema| %>
+	      	<li>
+	          <%= link_to schema.name, schema %>
+	        </li>
+        <% end %>
+    </ul>
+  </div>
+  <div class="clear"></div>
+<br /> <br />
+<iframe style="margin-top: 2px;" width="280" height="280" src="http://www.youtube.com/embed/O_16bQ1o-Tw" frameborder="0" allowfullscreen></iframe><br /> <br /> <iframe width="280" height="280" src="//www.youtube.com/embed/9O9CmyaRLUI" frameborder="0" allowfullscreen></iframe>
+
+</div>
+
+<div class="span-8 realtive last">
+
+</div>

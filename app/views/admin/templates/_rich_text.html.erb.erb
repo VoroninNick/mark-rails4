@@ -1,0 +1,9 @@
+<%
+  custom = { :rows => @resource[:class].typus_options_for(:form_rows), :toolbar=>'Full', :width=>'690px', :height=>'200px' }
+  options = options.merge!(custom)
+%>
+
+<li>
+  <%= form.label attribute, label_text %>
+  <%= form.cktext_area attribute, options %>
+</li>

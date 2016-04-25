@@ -1,0 +1,51 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("div.scrollable").hide();
+    $("a.show_bus").click(function () {
+      $("div.scrollable").slideToggle('slow', function() {
+        // Animation complete.
+      });
+    });
+  });
+</script>
+<script type="text/javascript" src="/javascripts/thickbox-compressed.js"></script>
+<link rel="stylesheet" href="/stylesheets/thickbox.css" type="text/css" media="screen" />
+<div class="span-4">
+  <%= content_tag("h1", "Контакти", :class => "title") %>
+  <div id="submit_form">
+
+    <h2>Зв’яжіться з нами!</h2>
+    <% form_for @contact do |f| %>
+      <%= f.label "Ваше ім’я і прізвище*" %>
+      <%= f.text_field "name", :class => "contact-input" %>
+      <%= f.label "Компанія, яку Ви представляєте*:" %>
+      <%= f.text_field "company", :class => "contact-input " %>
+      <%= f.label "Ваша посада*:" %>
+      <%= f.text_field "role", :class => "contact-input" %>
+      <%= f.label "Ваш телефон:" %>
+      <%= f.text_field "phone", :class => "contact-input" %>
+      <%= f.label "Ваш e-mail:" %>
+      <%= f.text_field "email", :class => "contact-input" %>
+      <%= f.label "Питання:" %>
+      <%= f.text_area "question", :class => "contact-area" %>
+      <%= f.submit "Надіслати", :class => "contact-submit" %>
+    <% end %>
+    <p class="small-info">* поля, які ми просимо заповнити, якщо Ви звертаєтесь з питань співпраці</p>
+  </div>
+  <br /> <br />
+<iframe style="margin-top: 2px;" width="310" height="310" src="http://www.youtube.com/embed/O_16bQ1o-Tw" frameborder="0" allowfullscreen></iframe> <br /> <br /> <iframe width="310" height="310" src="//www.youtube.com/embed/9O9CmyaRLUI" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div class="span-8 last">
+  <div class="padd">
+    <%= content_tag("h1", "Ми завжди раді бачити вас в центрі меблів та інтер’єру МАРК", :class => "color-title") %>
+  </div>
+  <%= image_tag "/images/map.jpg", :alt => "Карта доїзду", :class => "map" %>
+  <a href="#TB_inlinemodalContent?height=410&width=505&inlineId=hiddenDiv" title="Ми на Гугл карті :)" class="thickbox ajax-google-map">Подивитися розміщення на Google карті</a>
+  <div id="hiddenDiv" style="display:none;">
+    <iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/?q=95 Knyahyni Ol'hy street, Lviv, L'vivs'ka, Ukraine&amp;t=h&amp;output=embed"></iframe>
+  </div>
+  <div class="padd">
+    <%= Page.contacts.description.html_safe.force_encoding("utf-8") %>
+  </div>
+</div>

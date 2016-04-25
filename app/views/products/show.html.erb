@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/stylesheets/jquery.ad-gallery.css" type="text/css" media="screen, projection"/>
+<script type="text/javascript" src="/javascripts/jquery.ad-gallery.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    var gallery = $('.ad-gallery').adGallery({slideshow:{enable: false}});
+  });
+</script>
+<div class="span-4">
+  <%= render :partial => "catalogue", :locals => { :main_group => @product.groups.first } %>
+</div>
+<div class="span-8 last">
+  <div class="padd">
+    <%= content_tag("h1", @product.name.force_encoding("utf-8"), :class => "color-title") %>
+  </div>
+  <% unless @product.images.blank? %>
+  <div class="ad-gallery">
+    <div class="ad-image-wrapper">
+    </div>
+    <div class="ad-controls">
+    </div>
+    <div class="ad-nav">
+      <div class="ad-thumbs">
+        <ul class="ad-thumb-list">
+          <% @product.images.each_with_index do |image, index| %>
+            <li>
+              <%= link_to image_tag(image.avatar.url(:gallery_thumb).force_encoding("utf-8"), :title => image.name.force_encoding("utf-8"), :alt => @product.name.force_encoding("utf-8"), :class => "image#{index}"), image.avatar.url.force_encoding("utf-8") %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <div class="padd">
+    <%= @product.description.html_safe.force_encoding("utf-8") %>
+  </div>
+</div>
