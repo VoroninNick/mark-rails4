@@ -1,9 +1,17 @@
 class Inspiration < ActiveRecord::Base
-  cattr_reader :per_page
-  @@per_page = 10
+  attr_accessible *attribute_names
 
-  has_attached_file :avatar, :styles => { :admin_thumb => "100x50#", :thumb => "300x122#" }
-  has_attached_file :pdf
+  #cattr_reader :per_page
+  #@@per_page = 10
+  paginates_per 10
+
+  image :avatar, :styles => { :admin_thumb => "100x50#", :thumb => "300x122#" }
+  pdf :pdf
+
+
+
+
+
   scope :published, -> { where(published: 't') }
 
   validates_presence_of :name, :brief, :description

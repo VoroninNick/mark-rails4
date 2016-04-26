@@ -1,6 +1,9 @@
 class About < ActiveRecord::Base
+  attr_accessible *attribute_names
+
   acts_as_tree
   has_many :images, :as => :imageable
+  attr_accessible :images, :image_ids
   scope :published, -> { where(published: 't') }
 
   protected

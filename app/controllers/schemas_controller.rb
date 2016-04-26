@@ -7,7 +7,7 @@ class SchemasController < ApplicationController
   
   def show
     @schema = Schema.published.find(params[:id])
-    @places = @schema.places.find(:all, :order => "name ASC")
+    @places = @schema.places.order("name ASC")
   end
   
   private

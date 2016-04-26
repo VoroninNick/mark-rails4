@@ -1,6 +1,9 @@
 class Group < ActiveRecord::Base
+  attr_accessible *attribute_names
+
   acts_as_tree :order => "position"
   has_and_belongs_to_many :products
+  attr_accessible :products, :product_ids
 
   scope :published, -> { where(published: 't') }
 

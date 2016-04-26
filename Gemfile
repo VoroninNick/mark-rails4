@@ -52,9 +52,13 @@ gem 'paperclip'
 #gem 'activerecord-mysql2-adapter'
 
 gem 'acts_as_tree'
-gem 'will_paginate'
+#gem 'will_paginate'
+gem 'kaminari'
 gem 'devise'
 gem 'rails_admin'
 
 gem 'cms', github: "pkorenev/cms"
 #gem 'mysql'
+
+
+gem 'protected_attributes'

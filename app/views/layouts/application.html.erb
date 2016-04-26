@@ -94,7 +94,7 @@
       <div id="header">
         <%= link_to image_tag("/images/mark-logo.png", :alt => "Логотип Mark", :id => "logo"), '/', :class => 'logotype-new' %>
         <ul class="navigation-menu">
-          <li class="<%= request.request_uri =~ /about_us/ ? 'active' : '' %>"><%= link_to "Про нас", about_path(About.roots.first), :class => "about", :title => "Про нас" %></li>
+          <li class="<%= about_page? ? 'active' : '' %>"><%= link_to "Про нас", about_path(About.roots.first), :class => "about", :title => "Про нас" %></li>
           <li class="<%= current_page?(products_path) || params[:controller] == 'products' ? 'active' : '' %>"><%= link_to "Каталог", products_path, :class => "catalogue", :title => "Каталог" %></li>
           <li class="<%= current_page?(shares_path) || params[:controller] == 'shares' ? 'active' : '' %>"><%= link_to "Акції", shares_path, :class => "akcii", :title => "Акції" %></li>
           <li class="<%= current_page?(articles_path) || params[:controller] == 'articles' ? 'active' : '' %>"><%= link_to "Новини", articles_path, :class => "news", :title => "Новини" %></li>

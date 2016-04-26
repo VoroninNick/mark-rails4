@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   def index
     @title = "Home"
+    @shares = Share.hot.limit(3)
+    @articles = Article.published.limit(3)
+    @partners = Partner.published
   end
 
   def about

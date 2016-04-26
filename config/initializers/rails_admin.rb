@@ -35,5 +35,56 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.include_models
+  config.include_models About, Article, Banner, Contact, Group, Image, Inspiration, Page, Partner, Place, Product, Schema, Share, User
+
+  config.model About do
+    field :published
+    field :name
+    field :description
+    field :children
+    field :images
+  end
+
+  config.model Group do
+    field :published
+    field :name
+    #field :position
+    field :children
+    field :products
+  end
+
+  config.model Image do
+    visible false
+  end
+
+  config.model Partner do
+    field :published
+    field :name
+    field :url
+    field :avatar
+  end
+
+  config.model Place do
+    field :product
+    field :schema
+    field :name
+    field :left
+    field :top
+  end
+
+  config.model User do
+    field :email
+    field :password
+    field :password_confirmation
+  end
+
+  config.model Banner do
+    field :publish
+    field :name
+    field :link
+    field :avatar
+  end
+
+
+
 end

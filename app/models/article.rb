@@ -1,9 +1,13 @@
 class Article < ActiveRecord::Base
-  cattr_reader :per_page
-  @@per_page = 10
+  attr_accessible *attribute_names
 
-  has_attached_file :avatar, :styles => { :admin_thumb => "100x50#", :thumb => "300x122#" }
-  scope :published, -> { where(published: 't') }
+  #cattr_reader :per_page
+  #@@per_page = 10
+  paginates_per 10
+
+  image :avatar, :styles => { :admin_thumb => "100x50#", :thumb => "300x122#" }
+  attr_accessible :avatar
+  scope :published, -> { where(published: 't').order("updated_at DESC") }
 
   validates_presence_of :name, :brief, :description
 end
