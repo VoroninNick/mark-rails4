@@ -7,7 +7,7 @@ module PaperclipExtension
   def move_images(old_path_pattern = Paperclip::Attachment.default_options[:old_path], new_path_pattern = Paperclip::Attachment.default_options[:path])
     if self.try(:attachment_definitions).present?
       self.all.each do |instance|
-        self.attachment_definitions.each do |attachment_name|
+        self.attachment_definitions.each do |attachment_name, attachment_definition|
           attachment = instance.send(attachment_name)
           style_names = (attachment.styles.keys.map(&:to_s) + ["original"]).uniq
           style_names.each do |style_name|
