@@ -11,9 +11,9 @@ module PaperclipExtension
           attachment = instance.send(attachment_name)
           style_names = (attachment.styles.keys.map(&:to_s) + ["original"]).uniq
           style_names.each do |style_name|
-            old_path = attachment.interpolate(old_path_pattern, style_name)
+            old_path = attachment.send (:interpolate, old_path_pattern, style_name)
             if File.exists?(old_path)
-              new_path = attachment.interpolate(new_path_pattern, style_name)
+              new_path = attachment.send (:interpolate, new_path_pattern, style_name)
               new_dirname = File.dirname(new_path)
               unless File.directory?(new_dirname)
                 FileUtils.mkdir_p(new_dirname)
