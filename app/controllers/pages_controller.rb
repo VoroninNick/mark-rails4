@@ -10,12 +10,12 @@ class PagesController < ApplicationController
   def contacts
     @contact = Contact.new params[:contact]
     if request.post? and @contact.valid?
-      User.deliver_email_us(@contact)
+      UserMailer.new_email_us(@contact).deliver
       flash[:notice] = "Your message was sent successfuly. Thank you!"
       render template: "frontend/contacts"
       #render :action => "contacts"
     else
-      render :action => "contacts"
+
     end
   end
 
