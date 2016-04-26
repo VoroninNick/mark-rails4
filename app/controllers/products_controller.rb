@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   # GET /products.xml
   def index
     @title = "КАТАЛОГ"
-    @products = Product.all.where("groups_products.group_id IN(?) and products.published = ?", Group.published.all, true).includes(:groups).page(params[:page])
+    @products = Product.published.page(params[:page])
     # unless @products.nil?
     #   @products = @products.force_encoding("utf-8")
     # end
@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     rescue
       return render_not_found
     end
-    @products = Product.all.where("groups_products.group_id IN(?) and products.published = ?", [@group] + @group.children, true).includes(:groups).paginate(:include => [:groups], :page => params[:page])
+    @products = Product.published.joins(:groups).page(params[:page])
 
     respond_to do |format|
       format.html { render :action => "index" }
