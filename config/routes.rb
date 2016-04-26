@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   scope "products", controller: "products" do
     root action: "index", as: :products
-    get "grouped_by/:id", :action => "grouped_by"
+    get "grouped_by/:id", :action => "grouped_by", as: "grouped_products"
     get ":id", action: :show, as: "product"
   end
 
