@@ -1,7 +1,7 @@
 Paperclip::Attachment.default_options[:url] = "/:class/:id/:attachment/:style/:basename.:extension"
-Paperclip::Attachment.default_options[:path] = "public/:url"
+Paperclip::Attachment.default_options[:path] = "public:url"
 Paperclip::Attachment.default_options[:old_url] = "/system/:attachment/:id/:style/:basename.:extension"
-Paperclip::Attachment.default_options[:old_path] = "/system/:url"
+Paperclip::Attachment.default_options[:old_path] = "public:url"
 
 module PaperclipExtension
   def move_images(old_path_pattern = Paperclip::Attachment.default_options[:old_path], new_path_pattern = Paperclip::Attachment.default_options[:path])
@@ -16,14 +16,17 @@ module PaperclipExtension
           style_names.each do |style_name|
             puts "......style_name: #{style_name}"
             old_path = attachment.send(:interpolate, old_path_pattern, style_name)
-            puts "......old_path: #{old_path}; exists: #{File.exists?(old_path).inspect}"
+            puts "........old_path: #{old_path}; exists: #{File.exists?(old_path).inspect}"
+
             if File.exists?(old_path)
               new_path = attachment.send(:interpolate, new_path_pattern, style_name)
+              puts "........new_path: #{new_path}"
               new_dirname = File.dirname(new_path)
               unless File.directory?(new_dirname)
+                puts "..........creating directory: #{new_dirname}"
                 FileUtils.mkdir_p(new_dirname)
               end
-
+              puts "..........moving file '#{old_path}' to '#{new_path}'"
               FileUtils.mv(old_path, new_path)
             end
 
