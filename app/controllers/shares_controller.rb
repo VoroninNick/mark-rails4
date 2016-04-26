@@ -3,7 +3,7 @@ class SharesController < ApplicationController
   # GET /actions.xml
   def index
     @title = "АКЦІЇ"
-    @shares = Share.published.paginate :page => params[:page], :order => 'created_at DESC'
+    @shares = Share.published.order( 'created_at DESC').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

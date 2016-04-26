@@ -2,7 +2,7 @@ class InspirationsController < ApplicationController
   # GET /inspirations
   def index
     @title = "Натхнення"
-    @inspirations = Inspiration.published.paginate :page => params[:page], :order => 'created_at DESC'
+    @inspirations = Inspiration.published.order('created_at DESC').page(params[:page])
   end
 
   # GET /inspirations/1

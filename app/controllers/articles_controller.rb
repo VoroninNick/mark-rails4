@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   # GET /articles.xml
   def index
     @title = "НОВИНИ"
-    @articles = Article.published.paginate :page => params[:page], :order => 'created_at DESC'
+    @articles = Article.published.order('created_at DESC').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
