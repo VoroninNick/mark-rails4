@@ -1,6 +1,7 @@
 class AboutsController < ApplicationController
 
   def index
+    return redirect_to about_path(About.published.first), status: 302
     @title = "About us"
     @about = About.published.find(params[:id])
 
