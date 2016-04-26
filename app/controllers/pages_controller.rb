@@ -8,17 +8,17 @@ class PagesController < ApplicationController
 
 
   def contacts
-   # return render inline: "test"
-    @contact = Contact.new params[:contact]
-
-    if request.post? and @contact.valid?
-      UserMailer.new_email_us(@contact).deliver
-      flash[:notice] = "Your message was sent successfuly. Thank you!"
-      render template: "frontend/contacts"
-      #render :action => "contacts"
-    else
-
-    end
+    return render inline: "test"
+    # @contact = Contact.new params[:contact]
+    #
+    # if request.post? and @contact.valid?
+    #   UserMailer.new_email_us(@contact).deliver
+    #   flash[:notice] = "Your message was sent successfuly. Thank you!"
+    #   render template: "frontend/contacts"
+    #   #render :action => "contacts"
+    # else
+    #
+    # end
   end
 
 
