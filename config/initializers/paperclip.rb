@@ -15,12 +15,12 @@ module PaperclipExtension
           style_names = (attachment.styles.keys.map(&:to_s) + ["original"]).uniq
           style_names.each do |style_name|
             puts "......style_name: #{style_name}"
-            old_path = attachment.send(:interpolate, old_path_pattern, style_name)
+            old_path = attachment.send(:interpolate, old_path_pattern, style_name) rescue next
             puts "........old_path: #{old_path}; exists: #{File.exists?(old_path).inspect}"
 
             if File.exists?(old_path)
 
-              new_path = attachment.send(:interpolate, new_path_pattern, style_name) rescue next
+              new_path = attachment.send(:interpolate, new_path_pattern, style_name)
               puts "........new_path: #{new_path}"
               new_dirname = File.dirname(new_path)
               unless File.directory?(new_dirname)
