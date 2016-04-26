@@ -21,7 +21,7 @@ class Product < ActiveRecord::Base
 
 
 
-  scope :published, -> { where(published: 't') }
+  scope :published, -> { where(published: true) }
 
   validates_presence_of :name, :brief, :description
 

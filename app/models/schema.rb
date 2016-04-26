@@ -4,7 +4,7 @@ class Schema < ActiveRecord::Base
   image :avatar, :styles => { :thumb => "620x>" }
 
 
-  scope :published, -> { where(published: 't') }
+  scope :published, -> { where(published: true) }
   has_many :places
   attr_accessible :places, :place_ids
   has_many :products, :through => :places

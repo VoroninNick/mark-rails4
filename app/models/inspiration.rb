@@ -12,7 +12,7 @@ class Inspiration < ActiveRecord::Base
 
 
 
-  scope :published, -> { where(published: 't') }
+  scope :published, -> { where(published: true) }
 
   validates_presence_of :name, :brief, :description
   validates_attachment_content_type :pdf, :content_type => 'application/pdf', :message => "має бути формату pdf", :unless => Proc.new { |i| i.pdf_file_name.blank? }

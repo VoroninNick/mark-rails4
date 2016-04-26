@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
 
   image :avatar, :styles => { :admin_thumb => "100x50#", :thumb => "300x122#" }
   attr_accessible :avatar
-  scope :published, -> { where(published: 't').order("updated_at DESC") }
+  scope :published, -> { where(published: true).order("updated_at DESC") }
 
   validates_presence_of :name, :brief, :description
 end

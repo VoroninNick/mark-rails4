@@ -6,7 +6,7 @@ class Share < ActiveRecord::Base
   paginates_per 10
 
   image :avatar, :styles => { :admin_thumb => "100x50#", :thumb => "300x122#" }
-  scope :published, -> { where(published: 't') }
+  scope :published, -> { where(published: true) }
   scope :hot, -> { published.where(hot: 't').order("updated_at DESC") }
 
   validates_presence_of :name, :brief, :description

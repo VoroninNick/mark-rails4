@@ -5,7 +5,7 @@ class Banner < ActiveRecord::Base
   attr_accessible :avatar
   validates_presence_of :name, :message => "не може бути пустою"
 
-  scope :published, -> { where(publish: 't').order("created_at DESC") }
+  scope :published, -> { where(publish: true).order("created_at DESC") }
 
 
   def self.self_create_table

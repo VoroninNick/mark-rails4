@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
   has_and_belongs_to_many :products
   attr_accessible :products, :product_ids
 
-  scope :published, -> { where(published: 't') }
+  scope :published, -> { where(published: true) }
 
   validates_presence_of :name
   validates_uniqueness_of :name
