@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 
 
   controller "pages" do
-    get "about", action: "about", :as => "about"
+    get "about", action: "abouts#index", :as => "about_root"
+    get "about/:id", action: "abouts#show", :as => "about"
     get "contacts", :action => "contacts"
   end
 
