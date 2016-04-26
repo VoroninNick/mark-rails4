@@ -1,0 +1,133 @@
+uk:
+  activerecord:
+    models:
+      typus_user:
+        one: "Системний адміністратор"
+        few: "Системних адміністраторів"
+        many: "Системних адміністраторів"
+      group:
+        one: "Категорія"
+        few: "Категорії"
+        many: "Категорії"
+      inspiration:
+        one: "Натхнення"
+        few: "Натхнення"
+        many: "Натхнення"
+      product:
+        one: "Одиниця каталогу"
+        few: "Одиниці каталогу"
+        many: "Одиниці каталогу"
+      partner:
+        one: "Партнер"
+        few: "Партнери"
+        many: "Партнери"
+      banner:
+        one: "Банер"
+        few: "Банери"
+        many: "Банери"
+      place:
+        one: "Позиція"
+        few: "Позиції"
+        many: "Позиції"
+      about:
+        one: "Сторінка 'Про нас'"
+        few: "Сторінки 'Про нас'"
+        many: "Сторінки 'Про нас'"
+      share:
+        one: "Акція"
+        few: "Акції"
+        many: "Акції"
+      article:
+        one: "Новина"
+        few: "Новини"
+        many: "Новини"
+      schema:
+        one: "Схема"
+        few: "Схеми"
+        many: "Схеми"
+      image:
+        one: "Зображення"
+        few: "Зображення"
+        many: "Зображення"
+      page:
+        one: "Інші статичні сторінки"
+        few: "Інші статичні сторінки"
+        many: "Інші статичні сторінки"
+    attributes:
+      typus_user:
+        email:
+        first_name: "Імя"
+        last_name: "Призвіще"
+        password: "Пароль"
+        password_confirmation: "Підтверждення пароля"
+        status: "Статус"
+        role:  "Роль"
+        language: "Мова"
+      group:
+        published: "Публіковано"
+        name: "Назва"
+        parent_id: "Рівень"
+        parent: "Належить до"
+      place:
+        name: "Номер"
+      product:
+        published: "Публіковано"
+        name: "Назва"
+        group_id: "Категорія"
+        brief: "Короткий опис"
+        description: "Повний опис"
+        avatar: "Зображення"
+        logo: "Логотип (PNG-файл без заднього фону, використовуеться на План-схемі)"
+      about:
+        published: "Публіковано"
+        name: "Назва"
+        parent: "Рівень"
+        description: "Повний опис"
+      article:
+        published: "Публіковано"
+        name: "Назва"
+        brief: "Короткий опис"
+        description: "Повний опис"
+        avatar: "Зображення"
+      schema:
+        published: "Публіковано"
+        name: "Назва"
+        avatar: "Зображення"
+      inspiration:
+        published: "Публіковано"
+        name: "Назва"
+        brief: "Короткий опис"
+        description: "Повний опис"
+        avatar: "Зображення"
+        pdf: "PDF-файл (якщо є)"
+      share:
+        published: "Публіковано"
+        name: "Назва"
+        brief: "Короткий опис"
+        description: "Повний опис"
+        avatar: "Зображення"
+        hot: "Виводити на головну?"
+      partner:
+        publish: "Публіковано"
+        published: "Публіковано"
+        name: "Назва"
+        url: "Web-сторінка (Приклад: http://mark.lviv.ua)"
+        created_at: "Створено"
+        updated_at: "Редаговано"
+        publish: "Публіковано"
+        avatar: "Зображення"
+      banner:
+        publish: "Публіковано"
+        published: "Публіковано"
+        name: "Назва"
+        created_at: "Створено"
+        updated_at: "Редаговано"
+        publish: "Публіковано"
+        avatar: "Зображення"
+        link: "Посиланя"
+      page:
+        name: "Назва"
+        description: "Текст"
+      image:
+        name: "Назва"
+        avatar: "Зображення"
