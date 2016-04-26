@@ -15,7 +15,7 @@ class PagesController < ApplicationController
       render template: "frontend/contacts"
       #render :action => "contacts"
     else
-
+      return render inline: "test"
     end
   end
 
