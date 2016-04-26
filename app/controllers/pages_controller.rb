@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
 
   def contacts
-    return render inline: "test"
+   # return render inline: "test"
     @contact = Contact.new params[:contact]
 
     if request.post? and @contact.valid?
