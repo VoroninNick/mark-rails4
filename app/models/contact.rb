@@ -18,6 +18,8 @@ class Contact < ActiveRecord::Base
 
   def self.self_create_table
     ActiveRecord::Base.connection.create_table("contacts"){|t|
+      t.string :city
+      t.string :fax
       t.string :name
       t.string :company
       t.string :role
