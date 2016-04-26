@@ -22,10 +22,12 @@ Rails.application.routes.draw do
 
   post "/places/update_place", to: "places#set_place", as: :update_place
 
-
+  scope "about", controller: "abouts" do
+    root action: "index", :as => "about_root"
+    get ":id", action: "show", :as => "about"
+  end
   controller "pages" do
-    get "about", action: "abouts#index", :as => "about_root"
-    get "about/:id", action: "abouts#show", :as => "about"
+
     get "contacts", :action => "contacts"
   end
 
@@ -36,6 +38,6 @@ Rails.application.routes.draw do
 
 
 
-
+  match "*args", to: "application#render_not_found", as: "not_found", via: [:get, :post, :update, :create, :put, :delete]
 
 end

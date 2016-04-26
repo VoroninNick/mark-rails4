@@ -15,7 +15,11 @@ class ProductsController < ApplicationController
 
   def grouped_by
     @title = "КАТАЛОГ"
-    @group = Group.published.find(params[:id])
+    begin
+      @group = Group.published.find(params[:id])
+    rescue
+      return render_not_found
+    end
     @products = Product.all.where("groups_products.group_id IN(?) and products.published = ?", [@group] + @group.children, true).includes(:groups).paginate(:include => [:groups], :page => params[:page])
 
     respond_to do |format|
@@ -27,7 +31,11 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.xml
   def show
-    @product = Product.published.find(params[:id])
+    begin
+      @product = Product.published.find(params[:id])
+    rescue
+      return render_not_found
+    end
     @title = "КАТАЛОГ // #{@product.name}"
     respond_to do |format|
       format.html # show.html.erb

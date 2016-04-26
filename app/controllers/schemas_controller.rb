@@ -6,7 +6,11 @@ class SchemasController < ApplicationController
   end
   
   def show
-    @schema = Schema.published.find(params[:id])
+    begin
+      @schema = Schema.published.find(params[:id])
+    rescue
+      return render_not_found
+    end
     @places = @schema.places.order("name ASC")
   end
   

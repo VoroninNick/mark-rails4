@@ -13,7 +13,11 @@ class AboutsController < ApplicationController
 
 
   def show
-    @about = About.published.find(params[:id])
+    begin
+      @about = About.published.find(params[:id])
+    rescue
+      return render_not_found
+    end
 
     respond_to do |format|
       format.html # show.html.erb

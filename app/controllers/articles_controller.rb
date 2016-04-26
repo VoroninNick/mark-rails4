@@ -14,7 +14,11 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.xml
   def show
-    @article = Article.published.find(params[:id])
+    begin
+      @article = Article.published.find(params[:id])
+    rescue
+      return render_not_found
+    end
     @title = "НОВИНИ // #{@article.name.force_encoding("utf-8")}"
     respond_to do |format|
       format.html # show.html.erb

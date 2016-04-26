@@ -14,7 +14,11 @@ class SharesController < ApplicationController
   # GET /actions/1
   # GET /actions/1.xml
   def show
-    @share = Share.published.find(params[:id])
+    begin
+      @share = Share.published.find(params[:id])
+    rescue
+      return render_not_found
+    end
     @title = "АКЦІЇ // #{@share.name.force_encoding("utf-8")}"
     respond_to do |format|
       format.html # show.html.erb
@@ -23,7 +27,11 @@ class SharesController < ApplicationController
   end
 
   def hot
-    @products = Share.hot.published.find(params[:id])
+    begin
+      @products = Share.hot.published.find(params[:id])
+    rescue
+      return render_not_found
+    end
     @title = "АКЦІЇ // #{@share.name}"
     respond_to do |format|
       format.html # show.html.erb

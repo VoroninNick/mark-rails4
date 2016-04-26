@@ -7,7 +7,11 @@ class InspirationsController < ApplicationController
 
   # GET /inspirations/1
   def show
-    @inspiration = Inspiration.published.find(params[:id])
+    begin
+      @inspiration = Inspiration.published.find(params[:id])
+    rescue
+      return render_not_found
+    end
     @title = "Натхнення // #{@inspiration.name.force_encoding("utf-8")}"
   end
 
