@@ -58,7 +58,8 @@ gem 'devise'
 gem 'rails_admin'
 
 gem 'cms', github: "pkorenev/cms"
-#gem 'mysql'
+gem 'mysql', group: [:test, :production]
 
 
 gem 'protected_attributes'
+gem 'devise-i18n'

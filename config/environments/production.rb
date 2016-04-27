@@ -77,3 +77,23 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+# 91.225.136.24
+#
+# пересоздал юзеров со следующими паролями:
+#                                     voronin.nick@gmail.com
+# nick12345
+#
+# chaolyte@gmail.com
+# chaolyte12345
+#
+# karufnastia@gmail.com
+# karufnastia12345
+#
+# olha.kaminska@gmail.com
+# olha.kaminska12345
+#
+# marketing.tryslony@gmail.com
+# marketing12345
+#
+# plandzuev_viktor@mail.ru
+# plandzuev_viktor12345
